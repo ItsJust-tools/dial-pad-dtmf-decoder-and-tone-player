@@ -1,5 +1,6 @@
 /** A key on the telephone keypad (columns 1-4 include the A-D letters). */
-export type DtmfKey = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '0' | '*' | '#' | 'A' | 'B' | 'C' | 'D';
+export type DtmfKey =
+  '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '0' | '*' | '#' | 'A' | 'B' | 'C' | 'D';
 
 export interface ToolState {
   /** The current dial string: DTMF characters, optionally separated by spaces or dashes. */

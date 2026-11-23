@@ -11,13 +11,7 @@ import {
 } from 'react';
 import { ToolShell, useTool, ImportExport } from '@itsjust/core';
 import { compressToEncodedURIComponent, decompressFromEncodedURIComponent } from 'lz-string';
-import {
-  toolConfig,
-  templateBaseVersion,
-  ToolCanvas,
-  ToolToolbar,
-  ToolSidebar,
-} from '@/tool';
+import { toolConfig, templateBaseVersion, ToolCanvas, ToolToolbar, ToolSidebar } from '@/tool';
 import { dtmfTool as dtmfToolDef } from '@/tool/tool-definition';
 import {
   playbackDuration,
@@ -93,11 +87,14 @@ export default function ToolClient() {
 
     // Mirror the schedule for visual highlight timing in the UI.
     tones.forEach((tone) => {
-      const id = window.setTimeout(() => {
-        setActiveKey(tone.key);
-        const off = window.setTimeout(() => setActiveKey(null), Math.max(0, tone.duration));
-        timeoutsRef.current.push(off);
-      }, Math.max(0, tone.start));
+      const id = window.setTimeout(
+        () => {
+          setActiveKey(tone.key);
+          const off = window.setTimeout(() => setActiveKey(null), Math.max(0, tone.duration));
+          timeoutsRef.current.push(off);
+        },
+        Math.max(0, tone.start)
+      );
       timeoutsRef.current.push(id);
     });
 

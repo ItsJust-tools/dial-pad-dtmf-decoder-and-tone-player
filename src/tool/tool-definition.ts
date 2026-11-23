@@ -27,7 +27,9 @@ export const KEYPAD_MATRIX: readonly (readonly (DtmfKey | null)[])[] = [
   ['*', '0', '#', 'D'],
 ];
 
-export const DTMF_KEYS: readonly DtmfKey[] = KEYPAD_MATRIX.flat().filter((k): k is DtmfKey => k !== null);
+export const DTMF_KEYS: readonly DtmfKey[] = KEYPAD_MATRIX.flat().filter(
+  (k): k is DtmfKey => k !== null
+);
 
 /** Map every DTMF key to its exact tone-pair frequencies. */
 export function buildTonePairTable(): TonePairRow[] {
@@ -91,8 +93,18 @@ export function scheduleTones(
   toneDuration: number,
   pauseDuration: number
 ): ScheduledTone[] {
-  const tone = clampDuration(toneDuration, MIN_TONE_DURATION, MAX_TONE_DURATION, DEFAULT_TONE_DURATION);
-  const pause = clampDuration(pauseDuration, MIN_PAUSE_DURATION, MAX_PAUSE_DURATION, DEFAULT_PAUSE_DURATION);
+  const tone = clampDuration(
+    toneDuration,
+    MIN_TONE_DURATION,
+    MAX_TONE_DURATION,
+    DEFAULT_TONE_DURATION
+  );
+  const pause = clampDuration(
+    pauseDuration,
+    MIN_PAUSE_DURATION,
+    MAX_PAUSE_DURATION,
+    DEFAULT_PAUSE_DURATION
+  );
   const tones: ScheduledTone[] = [];
   let cursor = 0;
   for (const char of sequence.toUpperCase()) {

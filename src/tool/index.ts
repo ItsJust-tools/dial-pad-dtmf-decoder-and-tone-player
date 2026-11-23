@@ -23,9 +23,4 @@ export { ToolSidebar } from './components/tool-sidebar';
 export { Canvas } from './components/Canvas';
 export { Sidebar } from './components/Sidebar';
 export { Toolbar } from './components/Toolbar';
-export type {
-  ToolState,
-  DtmfKey,
-  ScheduledTone,
-  TonePairRow,
-} from './types';
+export type { ToolState, DtmfKey, ScheduledTone, TonePairRow } from './types';

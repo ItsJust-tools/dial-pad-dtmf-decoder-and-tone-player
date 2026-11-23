@@ -49,7 +49,8 @@ export const Canvas: React.FC<CanvasProps> = ({
     update({ sequence: cleaned });
   };
 
-  const displaySequence = state.sequence.trim().length > 0 ? state.sequence : sanitizeSequence(state.sequence);
+  const displaySequence =
+    state.sequence.trim().length > 0 ? state.sequence : sanitizeSequence(state.sequence);
 
   return (
     <div className="p-4 space-y-4 overflow-y-auto h-full" data-testid="dtmf-canvas">
@@ -131,10 +132,18 @@ export const Canvas: React.FC<CanvasProps> = ({
           <table className="w-full text-xs" data-testid="dtmf-table">
             <thead>
               <tr className="text-left text-gray-500 dark:text-gray-400">
-                <th scope="col" className="py-1 pr-3">Key</th>
-                <th scope="col" className="py-1 pr-3">Low (Hz)</th>
-                <th scope="col" className="py-1 pr-3">High (Hz)</th>
-                <th scope="col" className="py-1">Pair</th>
+                <th scope="col" className="py-1 pr-3">
+                  Key
+                </th>
+                <th scope="col" className="py-1 pr-3">
+                  Low (Hz)
+                </th>
+                <th scope="col" className="py-1 pr-3">
+                  High (Hz)
+                </th>
+                <th scope="col" className="py-1">
+                  Pair
+                </th>
               </tr>
             </thead>
             <tbody className="font-mono">
@@ -167,7 +176,10 @@ export const Canvas: React.FC<CanvasProps> = ({
       <section aria-label="Playback timing">
         <div className="flex flex-wrap gap-4">
           <div>
-            <label htmlFor="dtmf-tone-duration" className="text-xs text-gray-500 dark:text-gray-400">
+            <label
+              htmlFor="dtmf-tone-duration"
+              className="text-xs text-gray-500 dark:text-gray-400"
+            >
               Tone duration (ms)
             </label>
             <input
@@ -182,7 +194,10 @@ export const Canvas: React.FC<CanvasProps> = ({
             />
           </div>
           <div>
-            <label htmlFor="dtmf-pause-duration" className="text-xs text-gray-500 dark:text-gray-400">
+            <label
+              htmlFor="dtmf-pause-duration"
+              className="text-xs text-gray-500 dark:text-gray-400"
+            >
               Pause between tones (ms)
             </label>
             <input

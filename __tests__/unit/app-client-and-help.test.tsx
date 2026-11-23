@@ -69,7 +69,10 @@ vi.mock('@/tool', () => ({
 vi.mock('@/tool/tool-definition', () => ({
   dtmfTool: {
     serialize: (state: unknown) => JSON.stringify(state),
-    deserialize: () => ({ success: true, data: { sequence: '555', toneDuration: 150, pauseDuration: 60 } }),
+    deserialize: () => ({
+      success: true,
+      data: { sequence: '555', toneDuration: 150, pauseDuration: 60 },
+    }),
   },
   sanitizeSequence: (s: string) => s.replace(/[^0-9*#ABCD]/gi, ''),
   scheduleTones: () => [],

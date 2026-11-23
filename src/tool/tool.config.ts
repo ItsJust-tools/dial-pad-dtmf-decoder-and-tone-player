@@ -7,6 +7,13 @@ const toolConfig: ToolConfig = {
     'A phone keypad tool that plays or decodes DTMF tone sequences and shows the digits each tone pair represents.',
   version: '1.0.0',
   exportFormats: ['json', 'png', 'jpeg', 'webp', 'pdf'] as ToolConfig['exportFormats'],
+  theme: {
+    accent: '#f59e0b',
+    accentHover: '#d97706',
+    accentSubtle: 'rgba(245, 158, 11, 0.12)',
+    brand: 'Dial Pad DTMF Decoder & Tone Player',
+    icon: '\u{1F4F1}',
+  },
   features: {
     export: true,
     autoSave: true,

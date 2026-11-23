@@ -64,9 +64,12 @@ export function startDtmfPlayback({
       const endAt = startAt + tone.duration / 1000;
       maxEnd = Math.max(maxEnd, endAt);
 
-      const startTimer = window.setTimeout(() => {
-        if (!stopped.current) notify(tone, index);
-      }, Math.max(0, tone.start));
+      const startTimer = window.setTimeout(
+        () => {
+          if (!stopped.current) notify(tone, index);
+        },
+        Math.max(0, tone.start)
+      );
       timers.push(startTimer);
 
       for (const frequency of [tone.lowFrequency, tone.highFrequency]) {

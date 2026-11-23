@@ -107,11 +107,14 @@ describe('app and seo', () => {
       data: { sequence: '', toneDuration: 150, pauseDuration: 60 },
     });
     expect(dtmfTool.serialize({ ...DEFAULT_STATE, sequence: '11' })).toContain('"sequence":"11"');
-    expect(dtmfTool.deserialize({ sequence: '9x9', toneDuration: 99999, pauseDuration: -5 })).toEqual({
+    expect(
+      dtmfTool.deserialize({ sequence: '9x9', toneDuration: 99999, pauseDuration: -5 })
+    ).toEqual({
       success: true,
       data: { sequence: '99', toneDuration: 3000, pauseDuration: 0 },
     });
-    const exporters = (dtmfTool as { exporters?: Array<{ loader: ExporterLoader }> }).exporters ?? [];
+    const exporters =
+      (dtmfTool as { exporters?: Array<{ loader: ExporterLoader }> }).exporters ?? [];
     expect(exporters).toHaveLength(4);
     const first = exporters[0];
     expect(first).toBeDefined();

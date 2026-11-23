@@ -101,17 +101,24 @@ describe('sanitizeSequence', () => {
 });
 
 describe('scheduleTones', () => {
-  const state = (sequence: string, toneDuration = 100, pauseDuration = 50): string => ({
-    ...DEFAULT_STATE,
-    sequence,
-    toneDuration,
-    pauseDuration,
-  }).sequence;
+  const state = (sequence: string, toneDuration = 100, pauseDuration = 50): string =>
+    ({
+      ...DEFAULT_STATE,
+      sequence,
+      toneDuration,
+      pauseDuration,
+    }).sequence;
 
   it('schedules tones with correct start, duration, and pause values', () => {
     const tones = scheduleTones(state('123'), 100, 50);
     expect(tones).toHaveLength(3);
-    expect(tones[0]).toMatchObject({ key: '1', start: 0, duration: 100, lowFrequency: 697, highFrequency: 1209 });
+    expect(tones[0]).toMatchObject({
+      key: '1',
+      start: 0,
+      duration: 100,
+      lowFrequency: 697,
+      highFrequency: 1209,
+    });
     expect(tones[1]).toMatchObject({ key: '2', start: 150, duration: 100 });
     expect(tones[2]).toMatchObject({ key: '3', start: 300, duration: 100 });
   });
@@ -184,7 +191,11 @@ describe('dtmfTool serialize/deserialize', () => {
   });
 
   it('sanitizes invalid characters in stored sequence', () => {
-    const result = dtmfTool.deserialize({ sequence: '12x34', toneDuration: 100, pauseDuration: 50 });
+    const result = dtmfTool.deserialize({
+      sequence: '12x34',
+      toneDuration: 100,
+      pauseDuration: 50,
+    });
     expect(result.success).toBe(true);
     if (result.success) {
       expect(result.data.sequence).toBe('1234');
